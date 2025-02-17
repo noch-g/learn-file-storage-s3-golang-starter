@@ -41,11 +41,9 @@ func (cfg *apiConfig) handlerUploadThumbnail(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
-	// TODO: implement the upload here
 	const maxMemory = 10 << 20
 	r.ParseMultipartForm(maxMemory)
 
-	// "thumbnail" should match the HTML form input name
 	multiPartFile, header, err := r.FormFile("thumbnail")
 	if err != nil {
 		respondWithError(w, http.StatusBadRequest, "Unable to parse form file", err)
@@ -63,7 +61,7 @@ func (cfg *apiConfig) handlerUploadThumbnail(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
-	assetPath := getAssetPath(videoID, mediaType)
+	assetPath := getAssetPath(mediaType)
 	fileDiskPath := cfg.getAssetDiskPath(assetPath)
 	destFile, err := os.Create(fileDiskPath)
 	if err != nil {
