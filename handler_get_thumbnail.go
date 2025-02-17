@@ -14,13 +14,13 @@ func (cfg *apiConfig) handlerThumbnailGet(w http.ResponseWriter, r *http.Request
 		respondWithError(w, http.StatusBadRequest, "Invalid video ID", err)
 		return
 	}
-
+	fmt.Println("Getting thumbnail for videoID", videoID)
 	tn, ok := videoThumbnails[videoID]
 	if !ok {
 		respondWithError(w, http.StatusNotFound, "Thumbnail not found", nil)
 		return
 	}
-
+	fmt.Println("Thumbnail found")
 	w.Header().Set("Content-Type", tn.mediaType)
 	w.Header().Set("Content-Length", fmt.Sprintf("%d", len(tn.data)))
 
