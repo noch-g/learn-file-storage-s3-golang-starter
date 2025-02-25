@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/bootdotdev/learn-file-storage-s3-golang-starter/internal/auth"
+	"github.com/noch-g/learn-file-storage-s3-golang-starter/internal/auth"
 	"github.com/google/uuid"
 )
 
